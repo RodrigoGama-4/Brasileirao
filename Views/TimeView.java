@@ -7,7 +7,7 @@ import javax.swing.JTextField;
 import java.awt.GridBagConstraints;
 import java.awt.GridBagLayout;
 
-public class View extends JFrame {
+public class TimeView extends JFrame {
     private JPanel panel;
     private JLabel nameLabel;
     private JLabel jogadorLabel;
@@ -18,11 +18,11 @@ public class View extends JFrame {
     private JTextField posicaoField;
     private JTextField idadeField;
 
-    public View() {
+    public TimeView() {
         // Configurações da janela
         setTitle("Cadastro de Time");
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-        setSize(300, 200);
+        setSize(400, 200);
 
         // Criação do painel
         panel = new JPanel(new GridBagLayout());
@@ -76,6 +76,6 @@ public class View extends JFrame {
     }
 
     public static void main(String[] args) {
-        View timeView = new View();
+        TimeView timeView = new TimeView();
     }
 }
