@@ -1,18 +1,17 @@
 package Model;
 
-import java.util.Date;
 
 public class Partida {
+    private static int nextId = 1;
     private int id;
-    private Date data;
     private Time mandante;
     private Time visitante;
     private int golsMandante;
     private int golsVisitante;
 
-    public Partida(int id, Date data, Time mandante, Time visitante) {
-        this.id = id;
-        this.data = data;
+    public Partida(Time mandante, Time visitante) {
+        this.id = nextId;
+        nextId ++;
         this.mandante = mandante;
         this.visitante = visitante;
         this.golsMandante = 0;
@@ -21,10 +20,6 @@ public class Partida {
 
     public int getId() {
         return id;
-    }
-
-    public Date getData() {
-        return data;
     }
 
     public Time getMandante() {

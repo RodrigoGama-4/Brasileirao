@@ -1,5 +1,9 @@
 package Views;
 
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
+
+import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JTextField;
@@ -10,6 +14,7 @@ public class AdicionarConfrontoView extends JFrame {
     private JLabel labelTime2;
     private JTextField inputTime1;
     private JTextField inputTime2;
+    private JButton addConfrontoButton;
 
     public AdicionarConfrontoView() {
         // Configurações básicas da janela
@@ -38,7 +43,25 @@ public class AdicionarConfrontoView extends JFrame {
         inputTime2 = new JTextField();
         inputTime2.setBounds(100, 110, 200, 20);
         add(inputTime2);
+
+        addConfrontoButton = new JButton("Adiconar Confronto");
+        addConfrontoButton.setBounds(100, 150, 200, 20);
+        add(addConfrontoButton);
+
+
+
+        addConfrontoButton.addActionListener(new ActionListener() {
+
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                
+            }
+            
+        });
+
     }
+
+    
 
     public static void main(String[] args) {
         AdicionarConfrontoView timeView = new AdicionarConfrontoView();

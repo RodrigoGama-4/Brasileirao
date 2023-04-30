@@ -4,15 +4,16 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class Time {
+    private static int nextId = 1;
     private int id;
     private String nome;
-    private String tecnico;
     private List<Jogador> jogadores;
 
-    public Time(int id, String nome, String tecnico) {
-        this.id = id;
+    public Time(String nome) {
+        this.id = nextId;
+        nextId ++;
         this.nome = nome;
-        this.tecnico = tecnico;
+      
         this.jogadores = new ArrayList<>();
     }
 
@@ -24,19 +25,12 @@ public class Time {
         return nome;
     }
 
-    public String getTecnico() {
-        return tecnico;
-    }
 
-    public void setTecnico(String tecnico) {
-        this.tecnico = tecnico;
+    public void getJogadores() {
+        for (Jogador jogador : jogadores) {
+            System.out.println(jogador.getNome() + " - " + jogador.getPosicao());
+        }
     }
-
-    public List<Jogador> getJogadores() {
-        return jogadores;
-    }
-
-    
 
     public void adicionarJogador(Jogador jogador) {
         jogadores.add(jogador);
@@ -44,5 +38,5 @@ public class Time {
 
     public void removerJogador(Jogador jogador) {
         jogadores.remove(jogador);
-    }
+    }    
 }

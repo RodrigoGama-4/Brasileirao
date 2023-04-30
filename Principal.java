@@ -8,11 +8,11 @@ public class Principal {
     public static void main(String[] args) {
 
          // Instanciando o time Corinthians
-        Time corinthians = new Time(1, "Corinthians", "Técnico Corinthians");
+        Time corinthians = new Time("Corinthians");
         // Instanciando os jogadores do Corinthians
-        Jogador jogador1 = new Jogador(1, "Jogador 1", "Atacante", 10, corinthians);
-        Jogador jogador2 = new Jogador(2, "Jogador 2", "Meio-Campista", 8, corinthians );
-        Jogador jogador3 = new Jogador(3, "Jogador 3", "Zagueiro", 4, corinthians);
+        Jogador jogador1 = new Jogador("Jogador 1", "Atacante", 10, corinthians);
+        Jogador jogador2 = new Jogador("Jogador 2", "Meio-Campista", 8, corinthians );
+        Jogador jogador3 = new Jogador("Jogador 3", "Zagueiro", 4, corinthians);
 
         
         corinthians.adicionarJogador(jogador1);
@@ -33,11 +33,7 @@ public class Principal {
         }
 
         // Imprimindo a lista de jogadores do time Corinthians
-        System.out.println("\nJogadores do Corinthians:");
-        List<Jogador> jogadores = corinthians.getJogadores();
-        for (Jogador jogador : jogadores) {
-            System.out.println(jogador.getNome() + " - " + jogador.getPosicao());
-        }
+        
     }
 }
 

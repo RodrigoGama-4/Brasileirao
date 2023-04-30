@@ -1,11 +1,19 @@
 package Views;
 
+import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.JTextField;
+
+import Controller.TimeController;
+import Model.Jogador;
+import Model.Time;
+
 import java.awt.GridBagConstraints;
 import java.awt.GridBagLayout;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 
 public class TimeView extends JFrame {
     private JPanel panel;
@@ -16,7 +24,8 @@ public class TimeView extends JFrame {
     private JTextField nomeField;
     private JTextField jogadorField;
     private JTextField posicaoField;
-    private JTextField idadeField;
+    private JTextField numeroField;
+    private JButton adicionarButton;
 
     public TimeView() {
         // Configurações da janela
@@ -60,19 +69,38 @@ public class TimeView extends JFrame {
         panel.add(posicaoField, constraints);
 
         // Label e campo de texto para a idade
-        idadeLabel = new JLabel("Idade:");
+        idadeLabel = new JLabel("Numero:");
         constraints.gridx = 0;
         panel.add(idadeLabel, constraints);
 
-        idadeField = new JTextField(20);
+        numeroField = new JTextField(20);
         constraints.gridx = 1;
-        panel.add(idadeField, constraints);
+        panel.add(numeroField, constraints);
+
+        //BOTAO ADICIONAR
+        adicionarButton = new JButton("Adicionar Jogador");
+        constraints.gridy = 4;
+        panel.add(adicionarButton, constraints);
 
         // Adiciona o painel à janela
         add(panel);
 
         // Torna a janela visível
         setVisible(true);
+
+        adicionarButton.addActionListener(new ActionListener() {
+
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                Time time = new Time(nomeField.getText());
+                Jogador jogador = new Jogador(jogadorField.getText(), posicaoField.getText(), Integer.parseInt(numeroField.getText()), time);
+                TimeController timec = new TimeController();
+                timec.adicionarJogador(time, jogador);
+                timec.adicionarTime(time);
+                timec.listarTimes();
+            }
+            
+        });
     }
 
     public static void main(String[] args) {

@@ -1,14 +1,16 @@
 package Model;
 
 public class Jogador {
+    private static int nextId = 1;
     private int id;
     private String nome;
     private String posicao;
     private int numero;
     private Time time;
 
-    public Jogador(int id, String nome, String posicao, int numero, Time time) {
-        this.id = id;
+    public Jogador(String nome, String posicao, int numero, Time time) {
+        this.id = nextId;
+        nextId ++;
         this.nome = nome;
         this.posicao = posicao;
         this.numero = numero;

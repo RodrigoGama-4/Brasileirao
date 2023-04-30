@@ -1,14 +1,15 @@
 package Controller;
+import java.util.ArrayList;
 import java.util.List;
 
 import Model.Jogador;
 import Model.Time;
 
 public class TimeController {
-    private List<Time> times;
+    private List<Time> times = new ArrayList<>();
 
-    public TimeController(List<Time> times) {
-        this.times = times;
+    public TimeController() {
+        
     }
 
     public void adicionarTime(Time time) {
@@ -19,8 +20,11 @@ public class TimeController {
         times.remove(time);
     }
 
-    public List<Time> listarTimes() {
-        return times;
+    public void listarTimes() {
+        for (int i = 0; i< times.size(); i++){
+           System.out.println(times.get(i).getNome() + "Jogadores = ");
+           times.get(i).getJogadores();
+        }
     }
 
     public void adicionarJogador(Time time, Jogador jogador) {
@@ -31,7 +35,7 @@ public class TimeController {
         time.removerJogador(jogador);
     }
 
-    public List<Jogador> listarJogadores(Time time) {
+    /*public List<Jogador> listarJogadores(Time time) {
         return time.getJogadores();
-    }
+    }*/
 }
