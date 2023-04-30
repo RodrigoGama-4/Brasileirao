@@ -88,13 +88,14 @@ public class TimeView extends JFrame {
         // Torna a janela visível
         setVisible(true);
 
+        TimeController timec = new TimeController();
+
         adicionarButton.addActionListener(new ActionListener() {
 
             @Override
             public void actionPerformed(ActionEvent e) {
                 Time time = new Time(nomeField.getText());
                 Jogador jogador = new Jogador(jogadorField.getText(), posicaoField.getText(), Integer.parseInt(numeroField.getText()), time);
-                TimeController timec = new TimeController();
                 timec.adicionarJogador(time, jogador);
                 timec.adicionarTime(time);
                 timec.listarTimes();

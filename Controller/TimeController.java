@@ -6,7 +6,7 @@ import Model.Jogador;
 import Model.Time;
 
 public class TimeController {
-    private List<Time> times = new ArrayList<>();
+    public List<Time> times = new ArrayList<>();
 
     public TimeController() {
         
@@ -22,14 +22,28 @@ public class TimeController {
 
     public void listarTimes() {
         for (int i = 0; i< times.size(); i++){
-           System.out.println(times.get(i).getNome() + "Jogadores = ");
+           System.out.println(times.get(i).getNome() + " Jogadores = ");
            times.get(i).getJogadores();
+           System.out.println(times.size());
         }
     }
 
     public void adicionarJogador(Time time, Jogador jogador) {
-        time.adicionarJogador(jogador);
+        boolean jogadorAdicionado = false;
+        
+        for (int i = 0; i < times.size(); i++) {
+            if (times.get(i).getNome().equals(time.getNome())) {
+                times.get(i).adicionarJogador(jogador);
+                jogadorAdicionado = true;
+                break; // Interrompe o loop após adicionar o jogador
+            }
+        }
+        
+        if (!jogadorAdicionado) {
+            time.adicionarJogador(jogador);
+        }
     }
+    
 
     public void removerJogador(Time time, Jogador jogador) {
         time.removerJogador(jogador);
