@@ -2,8 +2,6 @@ package Model;
 
 import java.util.ArrayList;
 
-import Controller.TimeController;
-
 public class TimeFactory{   
     public static Time createTime(String nome, ArrayList<Time> listaTimes){
         

@@ -8,6 +8,8 @@ import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JTextField;
 
+import Princi.PrincipalView;
+
 public class AdicionarConfrontoView extends JFrame {
 
     private JLabel labelTime1;
@@ -15,13 +17,15 @@ public class AdicionarConfrontoView extends JFrame {
     private JTextField inputTime1;
     private JTextField inputTime2;
     private JButton addConfrontoButton;
+    private JButton voltarButton;
 
     public AdicionarConfrontoView() {
         // Configurações básicas da janela
         setTitle("Time View");
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-        setSize(400, 200);
+        setSize(400, 250);
         setLayout(null);
+        setResizable(false);
 
         // Criação dos componentes
         labelTime1 = new JLabel("Time 1:");
@@ -45,17 +49,32 @@ public class AdicionarConfrontoView extends JFrame {
         add(inputTime2);
 
         addConfrontoButton = new JButton("Adiconar Confronto");
-        addConfrontoButton.setBounds(100, 150, 200, 20);
+        addConfrontoButton.setBounds(150, 150, 150, 20);
         add(addConfrontoButton);
 
+        voltarButton = new JButton("VOLTAR");
+        voltarButton.setBounds(10, 150, 100, 20);
+        add(voltarButton);
 
 
+        //Ações AdiconarConfronto
         addConfrontoButton.addActionListener(new ActionListener() {
 
             @Override
             public void actionPerformed(ActionEvent e) {
                 
             }
+            
+        });
+
+        //Botao voltar
+        voltarButton.addActionListener(new ActionListener() {
+
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				dispose();
+                PrincipalView princi = new PrincipalView();
+			}
             
         });
 

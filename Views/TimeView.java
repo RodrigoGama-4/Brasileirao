@@ -10,6 +10,7 @@ import Controller.TimeController;
 import Model.Jogador;
 import Model.Time;
 import Model.TimeFactory;
+import Princi.PrincipalView;
 
 import java.awt.GridBagConstraints;
 import java.awt.GridBagLayout;
@@ -27,6 +28,7 @@ public class TimeView extends JFrame {
     private JTextField posicaoField;
     private JTextField numeroField;
     private JButton adicionarButton;
+    private JButton voltarButton;
 
     public TimeView() {
         // Configurações da janela
@@ -83,14 +85,23 @@ public class TimeView extends JFrame {
         constraints.gridy = 4;
         panel.add(adicionarButton, constraints);
 
+        //BOTAO VOLTAR
+        voltarButton = new JButton("VOLTAR");
+        constraints.gridy = 4;
+        constraints.gridx = 0;
+        panel.add(voltarButton, constraints);
+
         // Adiciona o painel à janela
         add(panel);
 
         // Torna a janela visível
         setVisible(true);
 
+
+        //INSTANCIO O TIMECONTROLLER    
         TimeController timec = new TimeController();
 
+        //AÇOES BOTAO ADICIONAR
         adicionarButton.addActionListener(new ActionListener() {
 
             @Override
@@ -100,6 +111,17 @@ public class TimeView extends JFrame {
                 timec.adicionarJogador(time, jogador);
                 timec.listarTimes();
             }
+        });
+
+        //AÇÕES VOLTAR BOTAO
+        voltarButton.addActionListener(new ActionListener() {
+
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				dispose();
+                PrincipalView princi = new PrincipalView();
+			}
+            
         });
     }
 
