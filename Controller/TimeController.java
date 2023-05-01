@@ -12,10 +12,6 @@ public class TimeController {
         
     }
 
-    public void adicionarTime(Time time) {
-        times.add(time);
-    }
-
     public ArrayList<Time> eita(){
         return times;
     }
@@ -28,7 +24,7 @@ public class TimeController {
         for (int i = 0; i< times.size(); i++){
            System.out.println(times.get(i).getNome() + " Jogadores = ");
            times.get(i).getJogadores();
-           System.out.println(times.size());
+           System.out.println("------------------------------------------");
         }
     }
 
@@ -39,7 +35,7 @@ public class TimeController {
             if (times.get(i).getNome().equals(time.getNome())) {
                 times.get(i).adicionarJogador(jogador);
                 jogadorAdicionado = true;
-                break; // Interrompe o loop após adicionar o jogador
+                break; 
             }
         }
         
@@ -52,8 +48,4 @@ public class TimeController {
     public void removerJogador(Time time, Jogador jogador) {
         time.removerJogador(jogador);
     }
-
-    /*public List<Jogador> listarJogadores(Time time) {
-        return time.getJogadores();
-    }*/
 }
