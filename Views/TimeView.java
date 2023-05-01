@@ -9,6 +9,7 @@ import javax.swing.JTextField;
 import Controller.TimeController;
 import Model.Jogador;
 import Model.Time;
+import Model.TimeFactory;
 
 import java.awt.GridBagConstraints;
 import java.awt.GridBagLayout;
@@ -94,11 +95,10 @@ public class TimeView extends JFrame {
 
             @Override
             public void actionPerformed(ActionEvent e) {
-                Time time = new Time(nomeField.getText());
-                Jogador jogador = new Jogador(jogadorField.getText(), posicaoField.getText(), Integer.parseInt(numeroField.getText()), time);
-                timec.adicionarJogador(time, jogador);
-                timec.adicionarTime(time);
-                timec.listarTimes();
+                Jogador jogador = new Jogador(jogadorField.getText(), posicaoField.getText(), Integer.parseInt(numeroField.getText()), TimeFactory.createTime(nomeField.getText(), timec.times));
+                timec.adicionarJogador(TimeFactory.createTime(nomeField.getText(), timec.times), jogador);
+                timec.adicionarTime(TimeFactory.createTime(nomeField.getText(), timec.times));
+                System.out.println(timec.eita());
             }
             
         });

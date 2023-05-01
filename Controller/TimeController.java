@@ -6,7 +6,7 @@ import Model.Jogador;
 import Model.Time;
 
 public class TimeController {
-    public List<Time> times = new ArrayList<>();
+    public ArrayList<Time> times = new ArrayList<>();
 
     public TimeController() {
         
@@ -14,6 +14,10 @@ public class TimeController {
 
     public void adicionarTime(Time time) {
         times.add(time);
+    }
+
+    public ArrayList<Time> eita(){
+        return times;
     }
 
     public void removerTime(Time time) {

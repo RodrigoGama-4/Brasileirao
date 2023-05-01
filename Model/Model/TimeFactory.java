@@ -1,32 +1,25 @@
 package Model;
 
-import java.util.List;
+import java.util.ArrayList;
 
 import Controller.TimeController;
 
-public class TimeFactory{
-    private static TimeController time;
-   
-
-    public static Time createTime(String nome){
-        List<Time> listaTimes = time.times;
-        Time a = null;
-
-        if (listaTimes.size() == 0){
-            a = new Time(nome);
-        }
-
-        for (int i = 0; i < listaTimes.size(); i++) {
-            if (listaTimes.get(i).getNome().equals(nome)) {
-                a = listaTimes.get(i);
-            }
-            else{
-                a = listaTimes.get(i);
-            }
-        }
+public class TimeFactory{   
+    public static Time createTime(String nome, ArrayList<Time> listaTimes){
         
-        return a;
+        for (Time time : listaTimes) {
+            if (time.getNome().equals(nome)) {
+                System.out.println("eiiita");
+                return time; // Retorna a instância existente se o nome corresponder
+            }
+        }
 
+        // Cria uma nova instância se nenhum time com o nome for encontrado
+        Time novoTime = new Time(nome);
+        listaTimes.add(novoTime);
+        System.out.println("oi");
+        return novoTime;
+        
         
     }
 }
