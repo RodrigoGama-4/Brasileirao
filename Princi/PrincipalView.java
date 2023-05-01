@@ -3,6 +3,8 @@ import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JPanel;
 
+import Controller.TimeController;
+import Model.Time;
 import Views.AdicionarConfrontoView;
 import Views.TimeView;
 
@@ -10,6 +12,7 @@ import java.awt.BorderLayout;
 import java.awt.GridLayout;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.util.ArrayList;
 import java.awt.Dimension;
 
 public class PrincipalView extends JFrame {
@@ -19,6 +22,9 @@ public class PrincipalView extends JFrame {
     private JButton verTabelaButton;
 
     public PrincipalView() {
+        TimeController timc = new TimeController();
+
+
         // Configurações da janela
         setTitle("Minha Aplicação");
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
@@ -68,7 +74,7 @@ public class PrincipalView extends JFrame {
             @Override
             public void actionPerformed(ActionEvent e) {
                 dispose();
-                AdicionarConfrontoView add = new AdicionarConfrontoView();
+                AdicionarConfrontoView add = new AdicionarConfrontoView(timc);
                 add.setVisible(true);
             }
             

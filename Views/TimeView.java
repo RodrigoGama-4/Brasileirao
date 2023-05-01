@@ -116,19 +116,23 @@ public class TimeView extends JFrame {
                 jogadorField.setText("");
                 posicaoField.setText("");
                 numeroField.setText("");
+
+                AdicionarConfrontoView ad = new AdicionarConfrontoView(timec);
             }
         });
 
         //AÇÕES VOLTAR BOTAO
         voltarButton.addActionListener(new ActionListener() {
-
+            
 			@Override
 			public void actionPerformed(ActionEvent e) {
-				dispose();
-                PrincipalView princi = new PrincipalView();
+                setVisible(false);
+                
 			}
+        
             
         });
+        
     }
 
     public static void main(String[] args) {

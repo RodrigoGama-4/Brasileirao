@@ -1,17 +1,19 @@
 package Controller;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import Model.Partida;
 
 public class PartidaController {
-    private List<Partida> partidas;
+    private ArrayList<Partida> partidas = new ArrayList<>();
 
-    public PartidaController(List<Partida> partidas) {
-        this.partidas = partidas;
+    public PartidaController() {
+        
     }
 
     public void adicionarPartida(Partida partida) {
+        System.out.println("PARTIDA ADICIONADA COM SUCESSO");
         partidas.add(partida);
     }
 

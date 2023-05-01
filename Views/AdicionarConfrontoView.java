@@ -2,12 +2,17 @@ package Views;
 
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.util.ArrayList;
 
 import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JTextField;
 
+import Controller.PartidaController;
+import Controller.TimeController;
+import Model.Partida;
+import Model.Time;
 import Princi.PrincipalView;
 
 public class AdicionarConfrontoView extends JFrame {
@@ -19,13 +24,14 @@ public class AdicionarConfrontoView extends JFrame {
     private JButton addConfrontoButton;
     private JButton voltarButton;
 
-    public AdicionarConfrontoView() {
+    public AdicionarConfrontoView(TimeController timec) {
         // Configurações básicas da janela
         setTitle("Time View");
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         setSize(400, 250);
         setLayout(null);
         setResizable(false);
+        setVisible(true);
 
         // Criação dos componentes
         labelTime1 = new JLabel("Time 1:");
@@ -57,11 +63,26 @@ public class AdicionarConfrontoView extends JFrame {
         add(voltarButton);
 
 
+        PartidaController partec = new PartidaController();
         //Ações AdiconarConfronto
         addConfrontoButton.addActionListener(new ActionListener() {
-
+            ArrayList<Time> doisTimes = new ArrayList<>();
             @Override
             public void actionPerformed(ActionEvent e) {
+                for (int i = 0; i < timec.times.size(); i++){
+                    if (timec.times.get(i).getNome().equals(inputTime1.getText())){
+                        doisTimes.add(timec.times.get(i));
+                    }
+                }
+
+                for (int i = 0; i < timec.times.size(); i++){
+                    if (timec.times.get(i).getNome().equals(inputTime2.getText())){
+                        doisTimes.add(timec.times.get(i));
+                    }
+                }
+
+                Partida partida = new Partida(null, null);
+                partec.adicionarPartida(partida);
                 
 
                 //Apagando texto anterior
@@ -86,8 +107,8 @@ public class AdicionarConfrontoView extends JFrame {
 
     
 
-    public static void main(String[] args) {
+   /* public static void main(String[] args) {
         AdicionarConfrontoView timeView = new AdicionarConfrontoView();
         timeView.setVisible(true);
-    }
+    }*/ 
 }
