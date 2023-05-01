@@ -63,6 +63,10 @@ public class AdicionarConfrontoView extends JFrame {
             @Override
             public void actionPerformed(ActionEvent e) {
                 
+
+                //Apagando texto anterior
+                inputTime1.setText("");
+                inputTime2.setText("");
             }
             
         });

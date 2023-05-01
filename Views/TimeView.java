@@ -110,6 +110,12 @@ public class TimeView extends JFrame {
                 Jogador jogador = new Jogador(jogadorField.getText(), posicaoField.getText(), Integer.parseInt(numeroField.getText()), time);
                 timec.adicionarJogador(time, jogador);
                 timec.listarTimes();
+
+                //Apagando texto anterior
+                nomeField.setText("");
+                jogadorField.setText("");
+                posicaoField.setText("");
+                numeroField.setText("");
             }
         });
 
