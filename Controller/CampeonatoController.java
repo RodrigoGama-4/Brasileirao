@@ -1,45 +1,47 @@
 package Controller;
 
-import java.util.List;
+import java.util.ArrayList;
 
 import Model.Partida;
 import Model.Time;
 
 
 public class CampeonatoController {
-    private List<Time> times;
-    private List<Partida> partidas;
+    private ArrayList<Time> times = new ArrayList<>();
+    private ArrayList<Partida> partidas = new ArrayList<>();
 
-    public CampeonatoController(List<Time> times, List<Partida> partidas) {
-        this.times = times;
-        this.partidas = partidas;
+    private static CampeonatoController instance;
+
+    private CampeonatoController() {
+    
     }
 
-    public void adicionarTime(Time time) {
-        times.add(time);
+    public static synchronized CampeonatoController getInstance() {
+        if (instance == null) {
+            instance = new CampeonatoController();
+        }
+        return instance;
+    }
+
+    public void adicionarTimes(ArrayList<Time> time) {
+        for (Time todosTimes: time){
+            times.add(todosTimes);
+        }
     }
 
     public void removerTime(Time time) {
         times.remove(time);
     }
 
-    public List<Time> listarTimes() {
-        return times;
-    }
-
-    public void adicionarPartida(Partida partida) {
-        partidas.add(partida);
+    public void adicionarPartidas(ArrayList<Partida> partida) {
+        for (Partida todasPartidas: partida){
+            partidas.add(todasPartidas);
+        }
     }
 
     public void removerPartida(Partida partida) {
         partidas.remove(partida);
     }
-
-    public List<Partida> listarPartidas() {
-        return partidas;
-    }
-
-    // Outros métodos e lógica relacionada ao campeonato...
 }
 
    

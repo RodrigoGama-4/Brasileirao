@@ -35,7 +35,7 @@ public class PrincipalView extends JFrame {
         // Criação dos botões
         adicionarJogadorButton = new JButton("Adicionar Jogador");
         marcarPartidaButton = new JButton("Marcar Partida");
-        verTabelaButton = new JButton("Consultar BD");
+        verTabelaButton = new JButton("DADOS DO CAMPEONATO");
 
         // Configuração do layout dos botões
         JPanel buttonPanel = new JPanel(new GridLayout(0, 1, 0, 10));
@@ -80,15 +80,17 @@ public class PrincipalView extends JFrame {
             
         });
 
-        /*verTabelaButton.addActionListener(new ActionListener() {
+        //MOSTRA OS DADOS DO CAMPEONATO
+        verTabelaButton.addActionListener(new ActionListener() {
 
             @Override
             public void actionPerformed(ActionEvent e) {
-                dispose();
+                setVisible(false);
+                System.out.println("------------------------LISTA DE TODOS OS TIMES ADICIONADOS------------------------");
                 //FAZER VIEW 
             }
             
-        });*/
+        });
     }
 
     public static void main(String[] args) {
