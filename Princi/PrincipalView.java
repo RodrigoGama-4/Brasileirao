@@ -4,7 +4,6 @@ import javax.swing.JFrame;
 import javax.swing.JPanel;
 
 import Controller.TimeController;
-import Model.Time;
 import Views.AdicionarConfrontoView;
 import Views.TimeView;
 
@@ -12,7 +11,6 @@ import java.awt.BorderLayout;
 import java.awt.GridLayout;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
-import java.util.ArrayList;
 import java.awt.Dimension;
 
 public class PrincipalView extends JFrame {
@@ -55,6 +53,8 @@ public class PrincipalView extends JFrame {
         // Torna a janela visível
         setVisible(true);
 
+
+        //Cria instancia padrao para passar para as outras views
         PrincipalView instanciaPrincipal = this;
 
 

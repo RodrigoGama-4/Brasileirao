@@ -1,7 +1,6 @@
 package Controller;
 
 import java.util.ArrayList;
-import java.util.List;
 
 import Model.Partida;
 
@@ -13,7 +12,7 @@ public class PartidaController {
     }
 
     public void adicionarPartida(Partida partida) {
-        System.out.println("PARTIDA ADICIONADA COM SUCESSO");
+        System.out.println("PARTIDA ENTRE O TIME: " + partida.getMandante().getNome() +" E O " + partida.getVisitante().getNome() + " ADICIONADA COM SUCESSO");
         partidas.add(partida);
     }
 
@@ -21,8 +20,11 @@ public class PartidaController {
         partidas.remove(partida);
     }
 
-    public List<Partida> listarPartidas() {
-        return partidas;
+    public void listarPartidas() {
+        System.out.println("-------------------- TODOS OS JOGOS ------------------------");
+        for (Partida parti : partidas){
+            System.out.println("Time 1: " + parti.getMandante().getNome() + " X " + "Time 2: "  + parti.getVisitante().getNome());
+        }
     }
 
     // Outros métodos e lógica relacionada às partidas...
