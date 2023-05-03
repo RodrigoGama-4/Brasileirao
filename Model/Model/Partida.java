@@ -45,6 +45,13 @@ public class Partida {
     public void setGolsVisitante(int golsVisitante) {
         this.golsVisitante = golsVisitante;
     }
+
+    @Override
+    public String toString() {
+        return "Partida: " +
+               mandante +  " x " +
+                " " + visitante;
+    }
 }
 
    
