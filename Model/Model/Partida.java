@@ -46,11 +46,9 @@ public class Partida {
         this.golsVisitante = golsVisitante;
     }
 
-    @Override
-    public String toString() {
-        return "Partida: " +
-               mandante +  " x " +
-                " " + visitante;
+   
+    public void paraString() {
+        System.out.println(mandante + " X " + visitante);
     }
 }
 

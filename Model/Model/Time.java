@@ -38,5 +38,9 @@ public class Time {
 
     public void removerJogador(Jogador jogador) {
         jogadores.remove(jogador);
-    }    
+    }
+    
+    public void paraString(){
+        System.out.println("Nome do Time: " + nome);
+    }
 }

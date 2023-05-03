@@ -38,6 +38,18 @@ public class CampeonatoController {
     public void removerPartida(Partida partida) {
         partidas.remove(partida);
     }
+
+    public void listarTimes(){
+        for (Time todosTime: times){
+            todosTime.paraString();
+        }
+    }
+
+    public void listarConfrontos(){
+        for (Partida todasPartidas: partidas){
+            todasPartidas.paraString();
+        }
+    }
 }
 
    

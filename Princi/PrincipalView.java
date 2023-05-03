@@ -3,6 +3,7 @@ import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JPanel;
 
+import Controller.CampeonatoController;
 import Controller.TimeController;
 import Views.AdicionarConfrontoView;
 import Views.TimeView;
@@ -57,6 +58,9 @@ public class PrincipalView extends JFrame {
         //Cria instancia padrao para passar para as outras views
         PrincipalView instanciaPrincipal = this;
 
+        //INSTANCIA PADRAO SINGLETON DE CAMPEONATO
+        CampeonatoController campC = CampeonatoController.getInstance();
+
 
         //FECHA JANELA PRINCIPAL E ABRE JANELA DE ADICIONAR JOGADOR
         adicionarJogadorButton.addActionListener(new ActionListener() {
@@ -87,7 +91,9 @@ public class PrincipalView extends JFrame {
             public void actionPerformed(ActionEvent e) {
                 setVisible(false);
                 System.out.println("------------------------LISTA DE TODOS OS TIMES ADICIONADOS------------------------");
-                //FAZER VIEW 
+                campC.listarTimes();
+                System.out.println("------------------------LISTA DE TODOS OS CONFRONTOS DO CAMPEONATO------------------------");
+                campC.listarConfrontos();
             }
             
         });
