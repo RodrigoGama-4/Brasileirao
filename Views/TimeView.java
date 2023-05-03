@@ -6,6 +6,7 @@ import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.JTextField;
 
+import Controller.CampeonatoController;
 import Controller.TimeController;
 import Model.Jogador;
 import Model.Time;
@@ -117,6 +118,9 @@ public class TimeView extends JFrame {
                 posicaoField.setText("");
                 numeroField.setText("");
 
+                //INSTANCIA SINGLETON CAMPEONATO
+                CampeonatoController campC = CampeonatoController.getInstance();
+                campC.adicionarTimes(time);
                
             }
         });
@@ -135,8 +139,4 @@ public class TimeView extends JFrame {
         });
         
     }
-
-    /*public static void main(String[] args) {
-        TimeView timeView = new TimeView();
-    } */
 }

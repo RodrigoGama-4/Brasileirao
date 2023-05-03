@@ -9,6 +9,7 @@ import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JTextField;
 
+import Controller.CampeonatoController;
 import Controller.PartidaController;
 import Controller.TimeController;
 import Model.Partida;
@@ -83,8 +84,12 @@ public class AdicionarConfrontoView extends JFrame {
 
                 Partida partida = new Partida(doisTimes.get(0), doisTimes.get(1));
                 partec.adicionarPartida(partida);
-                //partec.listarPartidas();
                 doisTimes.clear();
+
+
+                //INSTANCIA SINGLETON
+                CampeonatoController campC = CampeonatoController.getInstance();
+                campC.adicionarPartidas(partida);
 
                 //Apagando texto anterior
                 inputTime1.setText("");
@@ -105,11 +110,4 @@ public class AdicionarConfrontoView extends JFrame {
         });
 
     }
-
-    
-
-   /* public static void main(String[] args) {
-        AdicionarConfrontoView timeView = new AdicionarConfrontoView();
-        timeView.setVisible(true);
-    }*/ 
 }

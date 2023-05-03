@@ -27,5 +27,9 @@ public class PartidaController {
         }
     }
 
+    public ArrayList<Partida> getPartidas() {
+        return partidas;
+    }
+
     // Outros métodos e lógica relacionada às partidas...
 }

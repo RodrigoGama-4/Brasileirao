@@ -23,20 +23,16 @@ public class CampeonatoController {
         return instance;
     }
 
-    public void adicionarTimes(ArrayList<Time> time) {
-        for (Time todosTimes: time){
-            times.add(todosTimes);
-        }
+    public void adicionarTimes(Time time) {
+       times.add(time);
     }
 
     public void removerTime(Time time) {
         times.remove(time);
     }
 
-    public void adicionarPartidas(ArrayList<Partida> partida) {
-        for (Partida todasPartidas: partida){
-            partidas.add(todasPartidas);
-        }
+    public void adicionarPartidas(Partida partida) {
+        partidas.add(partida);
     }
 
     public void removerPartida(Partida partida) {
