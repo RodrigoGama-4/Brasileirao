@@ -83,7 +83,8 @@ public class AdicionarConfrontoView extends JFrame {
 
                 Partida partida = new Partida(doisTimes.get(0), doisTimes.get(1));
                 partec.adicionarPartida(partida);
-                
+                //partec.listarPartidas();
+                doisTimes.clear();
 
                 //Apagando texto anterior
                 inputTime1.setText("");
