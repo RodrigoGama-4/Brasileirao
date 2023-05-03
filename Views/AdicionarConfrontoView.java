@@ -81,7 +81,7 @@ public class AdicionarConfrontoView extends JFrame {
                     }
                 }
 
-                Partida partida = new Partida(null, null);
+                Partida partida = new Partida(doisTimes.get(0), doisTimes.get(1));
                 partec.adicionarPartida(partida);
                 
 
