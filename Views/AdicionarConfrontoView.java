@@ -24,7 +24,7 @@ public class AdicionarConfrontoView extends JFrame {
     private JButton addConfrontoButton;
     private JButton voltarButton;
 
-    public AdicionarConfrontoView(TimeController timec) {
+    public AdicionarConfrontoView(TimeController timec, PrincipalView princi) {
         // Configurações básicas da janela
         setTitle("Time View");
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
@@ -97,8 +97,8 @@ public class AdicionarConfrontoView extends JFrame {
 
 			@Override
 			public void actionPerformed(ActionEvent e) {
-				dispose();
-                PrincipalView princi = new PrincipalView();
+				setVisible(false);
+                princi.setVisible(true);
 			}
             
         });

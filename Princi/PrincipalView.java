@@ -55,6 +55,7 @@ public class PrincipalView extends JFrame {
         // Torna a janela visível
         setVisible(true);
 
+        PrincipalView instanciaPrincipal = this;
 
 
         //FECHA JANELA PRINCIPAL E ABRE JANELA DE ADICIONAR JOGADOR
@@ -62,8 +63,8 @@ public class PrincipalView extends JFrame {
 
             @Override
             public void actionPerformed(ActionEvent e) {
-                dispose();
-                TimeView time = new TimeView();
+                setVisible(false);
+                TimeView time = new TimeView(timc, instanciaPrincipal);
             }
             
         });
@@ -73,9 +74,8 @@ public class PrincipalView extends JFrame {
 
             @Override
             public void actionPerformed(ActionEvent e) {
-                dispose();
-                AdicionarConfrontoView add = new AdicionarConfrontoView(timc);
-                add.setVisible(true);
+                setVisible(false);
+                AdicionarConfrontoView add = new AdicionarConfrontoView(timc, instanciaPrincipal);
             }
             
         });

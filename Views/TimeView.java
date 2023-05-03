@@ -30,7 +30,7 @@ public class TimeView extends JFrame {
     private JButton adicionarButton;
     private JButton voltarButton;
 
-    public TimeView() {
+    public TimeView(TimeController timec, PrincipalView princi) {
         // Configurações da janela
         setTitle("Cadastro de Time");
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
@@ -99,7 +99,7 @@ public class TimeView extends JFrame {
 
 
         //INSTANCIO O TIMECONTROLLER    
-        TimeController timec = new TimeController();
+        //TimeController timec = new TimeController();
 
         //AÇOES BOTAO ADICIONAR
         adicionarButton.addActionListener(new ActionListener() {
@@ -117,7 +117,7 @@ public class TimeView extends JFrame {
                 posicaoField.setText("");
                 numeroField.setText("");
 
-                AdicionarConfrontoView ad = new AdicionarConfrontoView(timec);
+               
             }
         });
 
@@ -127,6 +127,7 @@ public class TimeView extends JFrame {
 			@Override
 			public void actionPerformed(ActionEvent e) {
                 setVisible(false);
+                princi.setVisible(true);
                 
 			}
         
@@ -135,7 +136,7 @@ public class TimeView extends JFrame {
         
     }
 
-    public static void main(String[] args) {
+    /*public static void main(String[] args) {
         TimeView timeView = new TimeView();
-    }
+    } */
 }
