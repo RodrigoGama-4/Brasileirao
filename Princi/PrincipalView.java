@@ -5,8 +5,12 @@ import javax.swing.JPanel;
 
 import Controller.CampeonatoController;
 import Controller.TimeController;
+import Model.Time;
 import Views.AdicionarConfrontoView;
 import Views.TimeView;
+
+import java.util.Scanner;
+
 
 import java.awt.BorderLayout;
 import java.awt.GridLayout;
@@ -84,6 +88,9 @@ public class PrincipalView extends JFrame {
             
         });
 
+        //Instancia do scanner
+        Scanner scanner = new Scanner(System.in);
+
         //MOSTRA OS DADOS DO CAMPEONATO
         verTabelaButton.addActionListener(new ActionListener() {
 
@@ -94,6 +101,24 @@ public class PrincipalView extends JFrame {
                 campC.listarTimes();
                 System.out.println("------------------------LISTA DE TODOS OS CONFRONTOS DO CAMPEONATO------------------------");
                 campC.listarConfrontos();
+
+                //OPÇÃO DE MOSTRAR OS NOMES DOS JOGADORES DO TIME
+                System.out.println("Voce tem uma opção de visualizar todos os jogadores de um time, você deseja? [S/N]");
+                String aceita = scanner.next();
+
+                while (aceita.equals("S") || aceita.equals("s")){
+                    System.out.println("Qual time voce deseja ver os jogadores?: ");
+                    String qualTime = scanner.next();
+                    for (Time times: campC.getTimes()){
+                        if (qualTime.equals(times.getNome())){
+                            times.getJogadores();
+                        }
+                    }
+                    System.out.println("Voce tem uma opção de visualizar todos os jogadores de um time, você deseja? [S/N]");
+                    aceita = scanner.next();
+                }
+                System.out.println("PROGRAMA FINALIZADO :)");
+
             }
             
         });

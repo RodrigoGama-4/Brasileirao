@@ -50,6 +50,10 @@ public class CampeonatoController {
             todasPartidas.paraString();
         }
     }
+
+    public ArrayList<Time> getTimes() {
+        return times;
+    }
 }
 
    

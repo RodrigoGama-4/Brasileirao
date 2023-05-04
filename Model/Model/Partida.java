@@ -48,7 +48,7 @@ public class Partida {
 
    
     public void paraString() {
-        System.out.println(mandante + " X " + visitante);
+        System.out.println(mandante.getNome() + " X " + visitante.getNome());
     }
 }
 

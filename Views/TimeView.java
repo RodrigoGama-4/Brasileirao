@@ -110,7 +110,7 @@ public class TimeView extends JFrame {
                 Time time =  TimeFactory.createTime(nomeField.getText(), timec.times);
                 Jogador jogador = new Jogador(jogadorField.getText(), posicaoField.getText(), Integer.parseInt(numeroField.getText()), time);
                 timec.adicionarJogador(time, jogador);
-                timec.listarTimes();
+                System.out.println("O jogador " + jogador.getNome() + " foi adicionado ao time " + time.getNome() + " com sucesso!");
 
                 //Apagando texto anterior
                 nomeField.setText("");
@@ -134,8 +134,6 @@ public class TimeView extends JFrame {
                 princi.setVisible(true);
                 
 			}
-        
-            
         });
         
     }

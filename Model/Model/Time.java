@@ -28,7 +28,7 @@ public class Time {
 
     public void getJogadores() {
         for (Jogador jogador : jogadores) {
-            System.out.println(jogador.getNome() + " - " + jogador.getPosicao());
+            System.out.println("Nome: " + jogador.getNome() + " -Número: " + jogador.getNumero() + " - Posição: " + jogador.getPosicao());
         }
     }
 
