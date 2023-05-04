@@ -118,10 +118,7 @@ public class TimeView extends JFrame {
                 posicaoField.setText("");
                 numeroField.setText("");
 
-                //INSTANCIA SINGLETON CAMPEONATO
-                CampeonatoController campC = CampeonatoController.getInstance();
-                campC.adicionarTimes(time);
-               
+                
             }
         });
 
