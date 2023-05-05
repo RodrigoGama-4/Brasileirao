@@ -6,7 +6,6 @@ import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.JTextField;
 
-import Controller.CampeonatoController;
 import Controller.TimeController;
 import Model.Jogador;
 import Model.Time;
