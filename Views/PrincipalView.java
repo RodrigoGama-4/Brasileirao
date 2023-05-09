@@ -115,8 +115,7 @@ public class PrincipalView extends JFrame {
                     System.out.println("Voce tem uma opção de visualizar todos os jogadores de um time, você deseja? [S/N]");
                     aceita = scanner.next();
                 }
-                System.out.println("PROGRAMA FINALIZADO :)");
-
+                PrincipalView mainview = new PrincipalView();
             }
             
         });
