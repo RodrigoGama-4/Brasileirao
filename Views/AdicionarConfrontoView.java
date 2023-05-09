@@ -14,7 +14,6 @@ import Controller.PartidaController;
 import Controller.TimeController;
 import Model.Partida;
 import Model.Time;
-import Princi.PrincipalView;
 
 public class AdicionarConfrontoView extends JFrame {
 

@@ -1,4 +1,4 @@
-package Princi;
+package Views;
 import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JPanel;
@@ -6,8 +6,6 @@ import javax.swing.JPanel;
 import Controller.CampeonatoController;
 import Controller.TimeController;
 import Model.Time;
-import Views.AdicionarConfrontoView;
-import Views.TimeView;
 
 import java.util.Scanner;
 

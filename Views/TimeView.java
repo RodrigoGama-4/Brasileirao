@@ -10,7 +10,6 @@ import Controller.TimeController;
 import Model.Jogador;
 import Model.Time;
 import Model.TimeFactory;
-import Princi.PrincipalView;
 
 import java.awt.GridBagConstraints;
 import java.awt.GridBagLayout;
