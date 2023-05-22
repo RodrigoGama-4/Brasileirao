@@ -2,7 +2,7 @@ package Model;
 
 
 public class Partida {
-    private static int nextId = 1;
+    private static int nextId = 0;
     private int id;
     private Time mandante;
     private Time visitante;
@@ -32,6 +32,10 @@ public class Partida {
 
     public int getGolsMandante() {
         return golsMandante;
+    }
+
+    public static int getNextId() {
+        return nextId;
     }
 
     public void setGolsMandante(int golsMandante) {

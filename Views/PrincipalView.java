@@ -3,6 +3,7 @@ import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JPanel;
 
+import Controller.BancoDadosController;
 import Controller.CampeonatoController;
 import Controller.TimeController;
 import Model.Time;
@@ -89,13 +90,17 @@ public class PrincipalView extends JFrame {
         //Instancia do scanner
         Scanner scanner = new Scanner(System.in);
 
+        BancoDadosController bd = new BancoDadosController();
+
         //MOSTRA OS DADOS DO CAMPEONATO
         verTabelaButton.addActionListener(new ActionListener() {
 
             @Override
             public void actionPerformed(ActionEvent e) {
                 setVisible(false);
-                System.out.println("------------------------LISTA DE TODOS OS TIMES ADICIONADOS------------------------");
+                bd.mostrarTimes();
+                bd.mostrarConfrontos();
+                /*System.out.println("------------------------LISTA DE TODOS OS TIMES ADICIONADOS------------------------");
                 campC.listarTimes();
                 System.out.println("------------------------LISTA DE TODOS OS CONFRONTOS DO CAMPEONATO------------------------");
                 campC.listarConfrontos();
@@ -115,7 +120,7 @@ public class PrincipalView extends JFrame {
                     System.out.println("Voce tem uma opção de visualizar todos os jogadores de um time, você deseja? [S/N]");
                     aceita = scanner.next();
                 }
-                System.out.println("Programa finalziado");
+                System.out.println("Programa finalziado");*/
             }
             
         });

@@ -9,6 +9,7 @@ import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JTextField;
 
+import Controller.BancoDadosController;
 import Controller.CampeonatoController;
 import Controller.TimeController;
 import Model.Partida;
@@ -87,6 +88,10 @@ public class AdicionarConfrontoView extends JFrame {
                 //INSTANCIA SINGLETON
                 CampeonatoController campC = CampeonatoController.getInstance();
                 campC.adicionarPartidas(partida);
+
+                //MEU BANCO DE DADOS
+                BancoDadosController bd = new BancoDadosController();
+                bd.marcarConfronto(partida);
 
                 //Apagando texto anterior
                 inputTime1.setText("");
