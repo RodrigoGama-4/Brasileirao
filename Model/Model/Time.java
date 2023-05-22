@@ -4,7 +4,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class Time {
-    private static int nextId = 1;
+    private static int nextId = 0;
     private int id;
     private String nome;
     private List<Jogador> jogadores;
@@ -23,6 +23,9 @@ public class Time {
 
     public String getNome() {
         return nome;
+    }
+    public static int getNextId() {
+        return nextId;
     }
 
 
