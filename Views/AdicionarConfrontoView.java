@@ -10,7 +10,6 @@ import javax.swing.JLabel;
 import javax.swing.JTextField;
 
 import Controller.CampeonatoController;
-import Controller.PartidaController;
 import Controller.TimeController;
 import Model.Partida;
 import Model.Time;
@@ -63,7 +62,7 @@ public class AdicionarConfrontoView extends JFrame {
         add(voltarButton);
 
 
-        PartidaController partec = new PartidaController();
+
         //Ações AdiconarConfronto
         addConfrontoButton.addActionListener(new ActionListener() {
             ArrayList<Time> doisTimes = new ArrayList<>();
@@ -82,7 +81,6 @@ public class AdicionarConfrontoView extends JFrame {
                 }
 
                 Partida partida = new Partida(doisTimes.get(0), doisTimes.get(1));
-                partec.adicionarPartida(partida);
                 doisTimes.clear();
 
 

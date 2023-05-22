@@ -32,7 +32,7 @@ public class BancoDadosController {
             statement.setString(1, jogador.getNome());
             statement.setString(2, jogador.getPosicao());
             statement.setInt(3, jogador.getNumero());
-            statement.setInt(4, idTime);
+            statement.setInt(4, 1);
             statement.executeUpdate();
         } catch (SQLException e) {
             System.out.println("Erro ao adicionar jogador ao banco de dados: " + e.getMessage());
@@ -51,8 +51,31 @@ public class BancoDadosController {
         }
     }
 
+
+
+
+
+    public int buscarIdTimePorNome(String nomeTime) {
+        int idTime = -1;
+    
+        try (Connection connection = DriverManager.getConnection(URL, USUARIO, SENHA)) {
+            String query = "SELECT id FROM times WHERE nome = ?";
+            PreparedStatement statement = connection.prepareStatement(query);
+            statement.setString(1, nomeTime);
+            ResultSet resultSet = statement.executeQuery();
+    
+            if (resultSet.next()) {
+                idTime = resultSet.getInt("id");
+            }
+        } catch (SQLException e) {
+            System.out.println("Erro ao buscar ID do time no banco de dados: " + e.getMessage());
+        }
+    
+        return idTime;
+    }
+
     public int adicionarTime(Time time) {
-        int idGerado = -1; // Valor padrão caso não seja possível obter o ID gerado
+        int idGerado = buscarIdTimePorNome(time.getNome());
 
         try (Connection connection = DriverManager.getConnection(URL, USUARIO, SENHA)) {
             String query = "INSERT INTO times (nome) VALUES (?)";
@@ -62,8 +85,11 @@ public class BancoDadosController {
 
             // Obtém o ID gerado
             ResultSet generatedKeys = statement.getGeneratedKeys();
-            if (generatedKeys.next()) {
-                idGerado = generatedKeys.getInt(1);
+            if (buscarIdTimePorNome(time.getNome()) != -1) {
+                idGerado = buscarIdTimePorNome(time.getNome());
+            }
+            else{
+                //idGerado = generatedKeys.getInt(1);
             }
 
         } catch (SQLException e) {
