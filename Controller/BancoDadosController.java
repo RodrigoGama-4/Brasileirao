@@ -40,22 +40,6 @@ public class BancoDadosController {
         }
     }
 
-    public void adicionarConfronto(Partida confronto) {
-        try (Connection connection = DriverManager.getConnection(URL, USUARIO, SENHA)) {
-            String query = "INSERT INTO Confrontos (time1_id, time2_id) VALUES (?, ?)";
-            PreparedStatement statement = connection.prepareStatement(query);
-            statement.setInt(1, confronto.getMandante().getId());
-            statement.setInt(2, confronto.getVisitante().getId());
-            statement.executeUpdate();
-        } catch (SQLException e) {
-            System.out.println("Erro ao adicionar confronto ao banco de dados: " + e.getMessage());
-        }
-    }
-
-
-
-
-
     public int buscarIdTimePorNome(Time nomeTime) {
         int idTime = -1;
     
@@ -95,4 +79,88 @@ public class BancoDadosController {
 
         return idGerado;
     }
+
+    //ADICIONANDO OS CONFRONTOS
+    public void marcarConfronto(Partida confronto) {
+        int idMandante = 0;
+        int idVisitante = 0;
+
+        try (Connection connection = DriverManager.getConnection(URL, USUARIO, SENHA)) {
+            // Buscar ID do time mandante
+            // Buscar ID do time mandante
+            String queryMandante = "SELECT id FROM times WHERE nome = ?";
+            PreparedStatement statementMandante = connection.prepareStatement(queryMandante);
+            statementMandante.setString(1, confronto.getMandante().getNome());
+            ResultSet resultSetMandante = statementMandante.executeQuery();
+
+            if (resultSetMandante.next()) {
+                idMandante = resultSetMandante.getInt("id");
+            }
+
+            // Buscar ID do time visitante
+            String queryVisitante = "SELECT id FROM times WHERE nome = ?";
+            PreparedStatement statementVisitante = connection.prepareStatement(queryVisitante);
+            statementVisitante.setString(1, confronto.getVisitante().getNome());
+            ResultSet resultSetVisitante = statementVisitante.executeQuery();
+            if (resultSetVisitante.next()) {
+                idVisitante = resultSetVisitante.getInt("id");
+            }
+
+            //Fazer a inserção ao banco de dados
+            String query = "INSERT INTO confrontos (id,time1_id,time2_id) VALUES (?, ?, ?)";
+            PreparedStatement statement = connection.prepareStatement(query);
+            statement.setInt(1, Partida.getNextId());
+            statement.setInt(2, idMandante);
+            statement.setInt(3, idVisitante);
+            statement.executeUpdate();
+
+        } catch (SQLException e) {
+            System.out.println("Erro ao associar IDs dos times ao confronto: " + e.getMessage());
+        }
+    }
+
+    //Função responsavel para retornar na tela do usuario as informações dos times
+    public void mostrarTimes() {
+        try (Connection connection = DriverManager.getConnection(URL, USUARIO, SENHA)) {
+            String query = "SELECT * FROM times";
+            PreparedStatement statement = connection.prepareStatement(query);
+            ResultSet resultSet = statement.executeQuery();
+    
+            System.out.println("Times:");
+            System.out.println("-------");
+            while (resultSet.next()) {
+                int id = resultSet.getInt("id");
+                String nome = resultSet.getString("nome");
+                System.out.printf("ID: %d | Nome: %s%n", id, nome);
+            }
+    
+        } catch (SQLException e) {
+            System.out.println("Erro ao exibir times: " + e.getMessage());
+        }
+    }
+    
+    //Função responsavel para retornar na tela do usuario as informações dos confrontos
+    public void mostrarConfrontos() {
+        try (Connection connection = DriverManager.getConnection(URL, USUARIO, SENHA)) {
+            String query = "SELECT c.id, t1.nome AS mandante, t2.nome AS visitante FROM confrontos c " +
+                    "INNER JOIN times t1 ON c.time1_id = t1.id " +
+                    "INNER JOIN times t2 ON c.time2_id = t2.id";
+            PreparedStatement statement = connection.prepareStatement(query);
+            ResultSet resultSet = statement.executeQuery();
+    
+            System.out.println("Confrontos:");
+            System.out.println("-----------");
+            while (resultSet.next()) {
+                int id = resultSet.getInt("id");
+                String mandante = resultSet.getString("mandante");
+                String visitante = resultSet.getString("visitante");
+                System.out.printf("ID: %d | Mandante: %s | Visitante: %s%n", id, mandante, visitante);
+            }
+    
+        } catch (SQLException e) {
+            System.out.println("Erro ao exibir confrontos: " + e.getMessage());
+        }
+    }
+    
+    
 }
