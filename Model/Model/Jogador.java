@@ -1,7 +1,7 @@
 package Model;
 
 public class Jogador {
-    private static int nextId = 1;
+    private static int nextId = 0;
     private int id;
     private String nome;
     private String posicao;
@@ -47,6 +47,10 @@ public class Jogador {
 
     public void setTime(Time time) {
         this.time = time;
+    }
+
+    public int getNextid(){
+        return nextId;
     }
 }
 
