@@ -27,12 +27,13 @@ public class BancoDadosController {
 
     public void adicionarJogador(Jogador jogador, int idTime) {
         try (Connection connection = DriverManager.getConnection(URL, USUARIO, SENHA)) {
-            String query = "INSERT INTO Jogadores (nome, posicao, numero, time_id) VALUES (?, ?, ?, ?)";
+            String query = "INSERT INTO Jogadores (id, nome, posicao, numero, time_id) VALUES (?, ?, ?, ?, ?)";
             PreparedStatement statement = connection.prepareStatement(query);
-            statement.setString(1, jogador.getNome());
-            statement.setString(2, jogador.getPosicao());
-            statement.setInt(3, jogador.getNumero());
-            statement.setInt(4, 1);
+            statement.setInt(1, jogador.getNextid());
+            statement.setString(2, jogador.getNome());
+            statement.setString(3, jogador.getPosicao());
+            statement.setInt(4, jogador.getNumero());
+            statement.setInt(5, idTime);
             statement.executeUpdate();
         } catch (SQLException e) {
             System.out.println("Erro ao adicionar jogador ao banco de dados: " + e.getMessage());
@@ -55,17 +56,20 @@ public class BancoDadosController {
 
 
 
-    public int buscarIdTimePorNome(String nomeTime) {
+    public int buscarIdTimePorNome(Time nomeTime) {
         int idTime = -1;
     
         try (Connection connection = DriverManager.getConnection(URL, USUARIO, SENHA)) {
             String query = "SELECT id FROM times WHERE nome = ?";
             PreparedStatement statement = connection.prepareStatement(query);
-            statement.setString(1, nomeTime);
+            statement.setString(1, nomeTime.getNome());
             ResultSet resultSet = statement.executeQuery();
     
             if (resultSet.next()) {
                 idTime = resultSet.getInt("id");
+            }
+            else{
+                idTime = Time.getNextId();
             }
         } catch (SQLException e) {
             System.out.println("Erro ao buscar ID do time no banco de dados: " + e.getMessage());
@@ -75,22 +79,15 @@ public class BancoDadosController {
     }
 
     public int adicionarTime(Time time) {
-        int idGerado = buscarIdTimePorNome(time.getNome());
+        int idGerado = buscarIdTimePorNome(time);
 
         try (Connection connection = DriverManager.getConnection(URL, USUARIO, SENHA)) {
-            String query = "INSERT INTO times (nome) VALUES (?)";
+            String query = "INSERT IGNORE INTO times (id, nome) VALUES (?, ?)";
             PreparedStatement statement = connection.prepareStatement(query, Statement.RETURN_GENERATED_KEYS);
-            statement.setString(1, time.getNome());
+            statement.setInt(1, idGerado);
+            statement.setString(2, time.getNome());
             statement.executeUpdate();
 
-            // Obtém o ID gerado
-            ResultSet generatedKeys = statement.getGeneratedKeys();
-            if (buscarIdTimePorNome(time.getNome()) != -1) {
-                idGerado = buscarIdTimePorNome(time.getNome());
-            }
-            else{
-                //idGerado = generatedKeys.getInt(1);
-            }
 
         } catch (SQLException e) {
             System.out.println("Erro ao adicionar time ao banco de dados: " + e.getMessage());
