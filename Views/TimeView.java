@@ -6,8 +6,8 @@ import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.JTextField;
 
-import Controller.BancoDadosController;
 import Controller.TimeController;
+import Dao.BancoDadosController;
 import Model.Jogador;
 import Model.Time;
 import Model.TimeFactory;
@@ -113,7 +113,7 @@ public class TimeView extends JFrame {
                 Jogador jogador = new Jogador(jogadorField.getText(), posicaoField.getText(), Integer.parseInt(numeroField.getText()), time);
                 timec.adicionarJogador(time, jogador);
                 System.out.println("O jogador " + jogador.getNome() + " foi adicionado ao time " + time.getNome() + " com sucesso!");
-                bd.adicionarJogador(jogador, bd.adicionarTime(time));
+                bd.adicionarJogador(jogador, bd.obterProximoIdJogador() ,bd.adicionarTime(time));
              
 
 

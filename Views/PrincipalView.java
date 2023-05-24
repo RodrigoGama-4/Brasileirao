@@ -2,10 +2,9 @@ package Views;
 import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JPanel;
-
-import Controller.BancoDadosController;
 import Controller.CampeonatoController;
 import Controller.TimeController;
+import Dao.BancoDadosController;
 import Model.Time;
 
 import java.util.Scanner;
@@ -100,27 +99,6 @@ public class PrincipalView extends JFrame {
                 setVisible(false);
                 bd.mostrarTimes();
                 bd.mostrarConfrontos();
-                /*System.out.println("------------------------LISTA DE TODOS OS TIMES ADICIONADOS------------------------");
-                campC.listarTimes();
-                System.out.println("------------------------LISTA DE TODOS OS CONFRONTOS DO CAMPEONATO------------------------");
-                campC.listarConfrontos();
-
-                //OPÇÃO DE MOSTRAR OS NOMES DOS JOGADORES DO TIME
-                System.out.println("Voce tem uma opção de visualizar todos os jogadores de um time, você deseja? [S/N]");
-                String aceita = scanner.next();
-
-                while (aceita.equals("S") || aceita.equals("s")){
-                    System.out.println("Qual time voce deseja ver os jogadores?: ");
-                    String qualTime = scanner.next();
-                    for (Time times: campC.getTimes()){
-                        if (qualTime.equals(times.getNome())){
-                            times.getJogadores();
-                        }
-                    }
-                    System.out.println("Voce tem uma opção de visualizar todos os jogadores de um time, você deseja? [S/N]");
-                    aceita = scanner.next();
-                }
-                System.out.println("Programa finalziado");*/
             }
             
         });

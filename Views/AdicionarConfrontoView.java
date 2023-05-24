@@ -9,9 +9,9 @@ import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JTextField;
 
-import Controller.BancoDadosController;
 import Controller.CampeonatoController;
 import Controller.TimeController;
+import Dao.BancoDadosController;
 import Model.Partida;
 import Model.Time;
 
@@ -66,32 +66,11 @@ public class AdicionarConfrontoView extends JFrame {
 
         //Ações AdiconarConfronto
         addConfrontoButton.addActionListener(new ActionListener() {
-            ArrayList<Time> doisTimes = new ArrayList<>();
             @Override
             public void actionPerformed(ActionEvent e) {
-                for (int i = 0; i < timec.times.size(); i++){
-                    if (timec.times.get(i).getNome().equals(inputTime1.getText())){
-                        doisTimes.add(timec.times.get(i));
-                    }
-                }
-
-                for (int i = 0; i < timec.times.size(); i++){
-                    if (timec.times.get(i).getNome().equals(inputTime2.getText())){
-                        doisTimes.add(timec.times.get(i));
-                    }
-                }
-
-                Partida partida = new Partida(doisTimes.get(0), doisTimes.get(1));
-                doisTimes.clear();
-
-
-                //INSTANCIA SINGLETON
-                CampeonatoController campC = CampeonatoController.getInstance();
-                campC.adicionarPartidas(partida);
-
                 //MEU BANCO DE DADOS
                 BancoDadosController bd = new BancoDadosController();
-                bd.marcarConfronto(partida);
+                bd.marcarConfronto(inputTime1.getText(), inputTime2.getText(), bd.obterProximoIdConfronto());
 
                 //Apagando texto anterior
                 inputTime1.setText("");
