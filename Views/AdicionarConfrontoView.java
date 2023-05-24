@@ -8,7 +8,9 @@ import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JTextField;
 import Controller.TimeController;
-import Dao.BancoDadosController;
+import Dao.ConfrontosDao;
+//import Dao.BancoDadosController;
+import Dao.ConfrontosDaoInterface;
 
 public class AdicionarConfrontoView extends JFrame {
 
@@ -64,7 +66,8 @@ public class AdicionarConfrontoView extends JFrame {
             @Override
             public void actionPerformed(ActionEvent e) {
                 //MEU BANCO DE DADOS
-                BancoDadosController bd = new BancoDadosController();
+                //BancoDadosController bd = new BancoDadosController();
+                ConfrontosDaoInterface bd = new ConfrontosDao();
                 bd.marcarConfronto(inputTime1.getText(), inputTime2.getText(), bd.obterProximoIdConfronto());
 
                 //Apagando texto anterior

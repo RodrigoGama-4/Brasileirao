@@ -7,7 +7,11 @@ import javax.swing.JPanel;
 import javax.swing.JTextField;
 
 import Controller.TimeController;
-import Dao.BancoDadosController;
+import Dao.JogadorDao;
+import Dao.JogadorDaoInterface;
+import Dao.TimeDao;
+import Dao.TimeDaoInterface;
+//import Dao.BancoDadosController;
 import Model.Jogador;
 import Model.Time;
 import Model.TimeFactory;
@@ -102,7 +106,9 @@ public class TimeView extends JFrame {
         //TimeController timec = new TimeController();
 
         //BANCO DE DADOS
-        BancoDadosController bd = new BancoDadosController();
+        //BancoDadosController bd = new BancoDadosController();
+        JogadorDaoInterface bd = new JogadorDao();
+        TimeDaoInterface bdTime = new TimeDao();
 
         //AÇOES BOTAO ADICIONAR
         adicionarButton.addActionListener(new ActionListener() {
@@ -113,7 +119,7 @@ public class TimeView extends JFrame {
                 Jogador jogador = new Jogador(jogadorField.getText(), posicaoField.getText(), Integer.parseInt(numeroField.getText()), time);
                 timec.adicionarJogador(time, jogador);
                 System.out.println("O jogador " + jogador.getNome() + " foi adicionado ao time " + time.getNome() + " com sucesso!");
-                bd.adicionarJogador(jogador, bd.obterProximoIdJogador() ,bd.adicionarTime(time));
+                bd.adicionarJogador(jogador, bd.obterProximoIdJogador() ,bdTime.adicionarTime(time));
              
 
 

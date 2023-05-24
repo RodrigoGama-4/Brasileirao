@@ -4,7 +4,7 @@ import javax.swing.JFrame;
 import javax.swing.JPanel;
 import Controller.CampeonatoController;
 import Controller.TimeController;
-import Dao.BancoDadosController;
+//import Dao.BancoDadosController;
 
 import java.util.Scanner;
 
@@ -88,7 +88,7 @@ public class PrincipalView extends JFrame {
         //Instancia do scanner
         Scanner scanner = new Scanner(System.in);
 
-        BancoDadosController bd = new BancoDadosController();
+        //BancoDadosController bd = new BancoDadosController();
 
         //MOSTRA OS DADOS DO CAMPEONATO
         verTabelaButton.addActionListener(new ActionListener() {
@@ -96,8 +96,8 @@ public class PrincipalView extends JFrame {
             @Override
             public void actionPerformed(ActionEvent e) {
                 setVisible(false);
-                bd.mostrarTimes();
-                bd.mostrarConfrontos();
+                //bd.mostrarTimes();
+                //bd.mostrarConfrontos();
             }
             
         });

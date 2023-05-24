@@ -1,4 +1,4 @@
-package Dao;
+/*package Dao;
 
 import java.sql.Connection;
 import java.sql.DriverManager;
@@ -25,7 +25,7 @@ public class BancoDadosController {
     }
 
 
-    /*FUNÇÕES NECESSARIAS PARA ADICIONAR O JOGADOR */
+    //FUNÇÕES NECESSARIAS PARA ADICIONAR O JOGADOR 
     public void adicionarJogador(Jogador jogador,int idJogador, int idTime) {
         try (Connection connection = DriverManager.getConnection(URL, USUARIO, SENHA)) {
             String query = "INSERT INTO Jogadores (id, nome, posicao, numero, time_id) VALUES (?, ?, ?, ?, ?)";
@@ -61,7 +61,7 @@ public class BancoDadosController {
     }
     
     
-    /*FUNÇÕES NECESSARIAS PARA ADICIONAR O TIME */
+    //FUNÇÕES NECESSARIAS PARA ADICIONAR O TIME 
     public int buscarIdTimePorNome(Time nomeTime) {
         int idTime = 1; // Valor padrão se a tabela estiver vazia
     
@@ -101,7 +101,7 @@ public class BancoDadosController {
         return idGerado;
     }
 
-    /*FUNÇÕES NECESSARIAS PARA MARCAR CONFRONTO */
+    //FUNÇÕES NECESSARIAS PARA MARCAR CONFRONTO 
     public void marcarConfronto(String mandante, String visitante, int idPartida) {
         int idMandante = buscarNomeTime(mandante);
         int idVisitante = buscarNomeTime(visitante);
@@ -163,7 +163,7 @@ public class BancoDadosController {
         return idTime;
     }
 
-    /*FUNÇÕES NECESSARIAS PARA PRINTAR AS INFORMAÇÕES NA TELA */
+    //FUNÇÕES NECESSARIAS PARA PRINTAR AS INFORMAÇÕES NA TELA
     public void mostrarTimes() {
         try (Connection connection = DriverManager.getConnection(URL, USUARIO, SENHA)) {
             String query = "SELECT * FROM times";
@@ -204,4 +204,4 @@ public class BancoDadosController {
             System.out.println("Erro ao exibir confrontos: " + e.getMessage());
         }
     }
-}
+}*/
