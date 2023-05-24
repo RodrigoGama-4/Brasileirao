@@ -4,7 +4,9 @@ import javax.swing.JFrame;
 import javax.swing.JPanel;
 import Controller.CampeonatoController;
 import Controller.TimeController;
+import Dao.DadosDao;
 //import Dao.BancoDadosController;
+import Dao.DadosDaoInterface;
 
 import java.util.Scanner;
 
@@ -89,6 +91,7 @@ public class PrincipalView extends JFrame {
         Scanner scanner = new Scanner(System.in);
 
         //BancoDadosController bd = new BancoDadosController();
+        DadosDaoInterface bd = new DadosDao();
 
         //MOSTRA OS DADOS DO CAMPEONATO
         verTabelaButton.addActionListener(new ActionListener() {
@@ -96,10 +99,9 @@ public class PrincipalView extends JFrame {
             @Override
             public void actionPerformed(ActionEvent e) {
                 setVisible(false);
-                //bd.mostrarTimes();
-                //bd.mostrarConfrontos();
+                bd.mostrarTimes();
+                bd.mostrarConfrontos();
             }
-            
         });
     }
 
