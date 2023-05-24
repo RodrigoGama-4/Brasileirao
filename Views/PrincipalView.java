@@ -5,7 +5,6 @@ import javax.swing.JPanel;
 import Controller.CampeonatoController;
 import Controller.TimeController;
 import Dao.BancoDadosController;
-import Model.Time;
 
 import java.util.Scanner;
 
