@@ -119,7 +119,7 @@ public class TimeView extends JFrame {
                 Jogador jogador = new Jogador(jogadorField.getText(), posicaoField.getText(), Integer.parseInt(numeroField.getText()), time);
                 timec.adicionarJogador(time, jogador);
                 System.out.println("O jogador " + jogador.getNome() + " foi adicionado ao time " + time.getNome() + " com sucesso!");
-                bd.adicionarJogador(jogador, bd.obterProximoIdJogador() ,bdTime.adicionarTime(time));
+                bd.adicionarJogador(jogador, bd.obterProximoIdJogador() ,bdTime.obterIdOuCriarTime(time));
              
 
 

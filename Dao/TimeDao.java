@@ -26,7 +26,7 @@ public class TimeDao implements TimeDaoInterface {
 
     @Override
     public int adicionarTime(Time time) {
-        int idGerado = buscarIdTimePorNome(time);
+        int idGerado = incrementarIdTimePorNome(time);
 
         try (Connection connection = DriverManager.getConnection(URL, USUARIO, SENHA)) {
             String query = "INSERT IGNORE INTO times (id, nome) VALUES (?, ?)";
@@ -43,8 +43,23 @@ public class TimeDao implements TimeDaoInterface {
         return idGerado;
     }
 
+    /* FUNÇÃO QUE FALTAVA PARA O PROJETO FICAR 100% */
     @Override
-    public int buscarIdTimePorNome(Time time) {
+    public int obterIdOuCriarTime(Time nomeTime) {
+        int idTime = buscarIdTimePorNome(nomeTime);
+    
+        if (idTime != -1) {
+            // O time já existe no banco de dados
+            return idTime;
+        } else {
+            // O time não existe no banco de dados, chamar função para realizar outra ação
+            int novoIdTime = adicionarTime(nomeTime);
+            return novoIdTime;
+        }
+    }
+
+    @Override
+    public int incrementarIdTimePorNome(Time time) {
         int idTime = 1; // Valor padrão se a tabela estiver vazia
     
         try (Connection connection = DriverManager.getConnection(URL, USUARIO, SENHA)) {
@@ -62,5 +77,26 @@ public class TimeDao implements TimeDaoInterface {
     
         return idTime;
     }
+
+    @Override
+    public int buscarIdTimePorNome(Time nomeTime) {
+        int idTime = -1;
+        
+        try (Connection connection = DriverManager.getConnection(URL, USUARIO, SENHA)) {
+            String query = "SELECT id FROM times WHERE nome = ?";
+            PreparedStatement statement = connection.prepareStatement(query);
+            statement.setString(1, nomeTime.getNome());
+            ResultSet resultSet = statement.executeQuery();
+        
+            if (resultSet.next()) {
+                idTime = resultSet.getInt("id");
+            }
+        } catch (SQLException e) {
+            System.out.println("Erro ao buscar ID do time no banco de dados: " + e.getMessage());
+        }
+        
+        return idTime;
+    }
+    
     
 }
