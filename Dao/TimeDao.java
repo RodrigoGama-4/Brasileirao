@@ -43,7 +43,7 @@ public class TimeDao implements TimeDaoInterface {
         return idGerado;
     }
 
-    /* FUNÇÃO QUE FALTAVA PARA O PROJETO FICAR 100% */
+    /* FUNÇÃO QUE FALTAVA PARA O PROJETO FICAR 100%  */
     @Override
     public int obterIdOuCriarTime(Time nomeTime) {
         int idTime = buscarIdTimePorNome(nomeTime);
